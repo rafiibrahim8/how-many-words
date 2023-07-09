@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Many Words</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="result">
+            {% if result %}
+            <h1 class="success-result-message">File Processed Successfully</h1>
+            <h2 class="result-text">Containts
+                <span>
+                    {% if result.count > 0 %}
+                    {{result.count}}
+                    {% else %}
+                    no
+                    {% endif %}
+                </span>
+                {% if result.count > 1 %}
+                words
+                {% else %}
+                word
+                {% endif %}
+                of length <span>{{length}}</span>
+            </h2>
+            {% else %}
+            <h1 class="failed-result-message">File processing failed</h1>
+            <h2 class="result-text">{{error.message}}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

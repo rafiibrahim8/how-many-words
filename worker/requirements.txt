@@ -1,0 +1,4 @@
+pdfminer.six
+pypandoc_binary
+redis
+requests

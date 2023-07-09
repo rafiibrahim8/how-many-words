@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Many Words</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <form class="form" method="post" enctype="multipart/form-data">
+            <div class="file-upload-wrapper" data-text="Select your file!">
+                <input name="file" type="file" class="file-upload-field" value="" required>
+            </div>
+            <div class="form-row-submit">
+                <input class="number-input" type="number" min="1" name="length" required placeholder="Length">
+                <input class="submit" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        $("form").on("change", ".file-upload-field", function () {
+            $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/, ''));
+        });
+        $(document).ready(function () {
+            $('.number-input').on('keypress', function (e) {
+                let keyCode = e.which ? e.which : e.keyCode;
+                let inputValue = String.fromCharCode(keyCode);
+
+                // Only allow numeric digits and the backspace key
+                if (!/^\d+$/.test(inputValue) && keyCode !== 8) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
